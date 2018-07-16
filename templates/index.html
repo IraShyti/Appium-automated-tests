@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" id="appium" class="highContrastSetting no_js" ng-app="appium">
+<head>
+  
+	<base href="/">
+	<meta charset="utf-8" />
+	<meta name="description" content="Appium Test Bed" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title id="pageTitle">Appium Test Bed</title>
+	<!--<link rel="shortcut icon" href="https://static.xx.fbcdn.net/rsrc.php/yl/r/H3nktOa7ZMg.ico" />-->
+
+
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-resource.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-sanitize.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-cookies.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+	<script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-114/svg-assets-cache.js"></script>
+
+
+	<!--<script src="https://cdn.rawgit.com/a8m/angular-filter/master/dist/angular-filter.js"></script>-->
+
+	<script data-require="ui-router@0.2.15" data-semver="0.2.15" src="//rawgit.com/angular-ui/ui-router/0.2.15/release/angular-ui-router.js"></script>
+
+	<script src="/static/app/app.js"></script>
+	<script src="/static/app/services/device-service.js"></script>
+	<script src="/static/app/services/testcase-service.js"></script>
+	<script src="/static/app/services/restClient-service.js"></script>
+
+	<script src="/static/app/controllers/main-controller.js"></script>
+
+	<link href='http://fonts.googleapis.com/css?family=Josefin+Slab:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="/static/css/demo.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css" />
+	<link rel="stylesheet" type="text/css" href="/static/css/component.css" />
+	<script type="text/javascript" src="/static/js/modernizr.custom.79639.js"></script>
+	
+</head>
+
+<body ng-controller="MainController">
+    <div class="container">
+	
+		
+		<div class="st-container">
+		
+			<input type="radio" name="radio-set" checked="checked" id="st-control-1"/>
+			<a href="#st-panel-1">Device List</a>
+			<input type="radio" name="radio-set" id="st-control-2"/>
+			<a href="#st-panel-2">Test Cases</a>
+			<input type="radio" name="radio-set" id="st-control-3"/>
+			<a href="#st-panel-3">Start</a>
+			<input type="radio" name="radio-set" id="st-control-4"/>
+			<a href="#st-panel-4">Logs</a>
+			
+			<div class="st-scroll">
+			
+				<!-- Placeholder text from http://hipsteripsum.me/ -->
+				
+
+
+				<section class="st-panel" id="st-panel-1">
+					<div class="st-deco" data-icon="m"></div>
+					<h2>Devices</h2>
+					<div class="st-list">
+						<form class="me-select">
+							<ul id="me-select-list">
+								<li ng-repeat = "device in deviceList" ng-class="{selected: selectedDeviceIndex == $index}" ng-click="selectDevice($index)">
+									<input type="checkbox" ng-checked="selectedDeviceIndex == $index">
+									<label>
+											<span>{{device.platform_name}}</span>
+											<span>{{device.device_display_name}}</span>
+											<span>{{device.platform_version}}</span>
+									</label>
+								</li>
+							</ul>
+						</form>
+					</div>
+				</section>
+				
+				<section class="st-panel st-color" id="st-panel-2">
+					<div class="st-deco" data-icon="F"></div>
+					<h2>Test Cases</h2>
+					<div class="st-list">
+						<form class="me-select-test">
+							<ul id="me-select-list">
+								<li ng-repeat = "testcase in testCaseList" ng-class="{selected: selectedTestCaseIndex == $index}" ng-click="selectTestCase($index)">
+									<input type="checkbox" ng-checked="selectedTestCaseIndex == $index">
+									<label>
+											<span style = "color:rgb(255, 255, 255)">{{testcase.test_case_name}}</span>
+									</label>
+								</li>
+							</ul>
+						</form>
+					</div>
+					
+				</section>
+				
+				<section class="st-panel" id="st-panel-3">
+					<div class="st-deco" data-icon="v"></div>
+					<h2>Start</h2>
+					<div class="st-list">
+						<p><span>Selected device : {{deviceList[selectedDeviceIndex].device_display_name}}</span>
+						<br><span>Selected test case : {{testCaseList[selectedTestCaseIndex].test_case_name}}</span></p>
+						<div class="buttonContainer">
+							<button type="submit" name="start_appium" class="button" ng-click="startAppium()"><strong>Start Appium</strong></button>
+							<br>
+							<br>
+							<br>
+							<button type="submit" name="start_test" class="button" ng-click="startTest()"><strong>Start Test</strong></button>
+						</div>
+					</div>
+				</section>
+				
+				<section class="st-panel st-color" id="st-panel-4">
+					<div class="st-deco" data-icon="x"></div>
+					<h2>Test Logs</h2>
+				</section>
+
+			</div><!-- // st-scroll -->
+			
+		</div><!-- // st-container -->
+		
+    </div>
+	<!--<script src="js/magicselection.js"></script>-->
+</body>
+</html>

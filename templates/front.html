@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="chat.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='chat.css') }}" />
+        <link rel="stylesheet" href="chat.css">
+        <link rel="stylesheet" href="{{ static_url('chat.css') }}" type="text/css">
+        <link rel="stylesheet" href="{{ static_url('chat.css') }}" type="text/css">
+        <meta charset="UTF-8">
+        <title>Appium Tests</title>
+    </head>
+    <style>
+        .button {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 30px 80px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 20px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 8px;
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+        }
+        .button:hover {background-color: #3e8e41}
+
+        .button:active {
+          background-color: #3e8e41;
+          box-shadow: 0 5px #666;
+          transform: translateY(4px);
+        }
+
+        .selection{
+            padding: 30px 80px;
+            color: red;
+            }
+    </style>
+    <body>
+        <h1>Appium Tests</h1>
+        <div>
+            <button type="submit" name="start_appium" class="button"><strong>Start Appium</strong></button>
+        <h3>Selecet the device</h3>
+        <select class="selection">
+            <option value="volvo" >Android</option>
+            <option value="saab">IOS</option>
+        </select>
+
+        <select>
+            <option>LG</option>
+            <option>Samsung S3</option>
+            <option>Samsung</option>
+            <option>All devices</option>
+        </select>
+        </div>
+        <div>
+            <h2>Select the test</h2>
+            <select>
+            <option name = 'log_in'>Log In</option>
+            <option name = 'signup'>Sign Up</option>
+            <option name = 'support'>Support</option>
+            <option name = 'settings'>Settings</option>
+        </select>
+            </div>
+        <div>
+        <button type="submit" name="start_test" class="button"><strong>Start Test</strong></button>
+        </div>
+
+
+    </body>
+</html>

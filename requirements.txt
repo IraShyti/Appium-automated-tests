@@ -1,0 +1,5 @@
+tornado==4.4.1
+ujson==1.35
+pymongo==3.3.0
+Appium-Python-Client==0.22
+supervisor==3.3.1
